@@ -23,16 +23,15 @@ jobs:
       - name: SFTP Deploy
         uses: wlixcc/SFTP-Deploy-Action@v1.2.1
         with:
-          username: ubuntu
-          server: 34.73.232.126
+          username: ${{ secrets.SSH_USER }}
+          server: ${{ secrets.SSH_HOST }}
           port: 22 # default is 22
           ssh_private_key: ${{ secrets.SSH_KEY }}
-
-          
+        
           # will put all file under this path
           local_path: ./* # default is ./*
           # files will copy to under remote_path
-          remote_path: /var/www/html/
+          remote_path: /var/www/tammiemosley.com/
           
           # sftp args
           args: '-o ConnectTimeout=5'
